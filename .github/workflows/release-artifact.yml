@@ -19,8 +19,6 @@ jobs:
         with:
           name: game_engine.exe
           path: target/debug/game.exe
-
-      - run: ls -al
       
       - name: Upload binaries to release
         if: startsWith(github.ref, 'v')
