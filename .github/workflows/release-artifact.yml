@@ -7,17 +7,20 @@ on:
 
 jobs:
   build-project:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v6
 
-      - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > install.sh && chmod 777 install.sh && ./install.sh -y
+      - run: winget install -e --id Rustlang.Rustup
+
       - run: cargo build
 
       - uses: actions/upload-artifact@v7
         with:
-          name: gameengine.exe
-          path: /home/runner/work/Rust-GameEngine/Rust-GameEngine/target/debug/game.exe
+          name: game_engine.exe
+          path: target/debug/game.exe
+
+      - run: ls -al
       
       - name: Upload binaries to release
         if: startsWith(github.ref, 'v')
