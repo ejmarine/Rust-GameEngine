@@ -2,6 +2,8 @@ name: release-artifact
 
 on:
   push:
+    tags:
+      - 'v*.*.*'
   workflow_dispatch:
     
 
@@ -11,8 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - run: winget install -e --id Rustlang.Rustup --accept-source-agreements --accept-package-agreements
-
       - run: cargo build
 
       - uses: actions/upload-artifact@v7
@@ -21,7 +21,7 @@ jobs:
           path: target/debug/game.exe
       
       - name: Upload binaries to release
-        if: startsWith(github.ref, 'v')
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: svenstaro/upload-release-action@v2
         with:
             repo_token: ${{ secrets.GITHUB_TOKEN }}
