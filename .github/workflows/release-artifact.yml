@@ -19,6 +19,6 @@ jobs:
 
 
             - uses: actions/upload-artifact@v7
-                with: 
-                    name: gameengine.exe
-                    path: target/debug/game.exe
+              with: 
+                name: gameengine.exe
+                path: target/debug/game.exe
