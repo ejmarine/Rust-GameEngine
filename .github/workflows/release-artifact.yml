@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - run: winget install -e --id Rustlang.Rustup
+      - run: winget install -e --id Rustlang.Rustup --accept-source-agreements --accept-package-agreements
 
       - run: cargo build
 
