@@ -10,15 +10,13 @@ on:
 jobs:
   build-project:
     runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v6
+    steps:
+      - uses: actions/checkout@v6
 
-            
-        - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-        - run: cargo build
+      - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+      - run: cargo build
 
-
-        - uses: actions/upload-artifact@v7
-            with: 
-              name: gameengine.exe
-              path: target/debug/game.exe
+      - uses: actions/upload-artifact@v7
+        with:
+          name: gameengine.exe
+          path: target/debug/game.exe
