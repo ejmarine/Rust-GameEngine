@@ -11,8 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > install.sh
-      - run: ./install.sh -y
+      - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > install.sh && chmod 777 install.sh && ./install.sh -y
       - run: cargo build
 
       - uses: actions/upload-artifact@v7
